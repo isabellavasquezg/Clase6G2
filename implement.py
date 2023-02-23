@@ -9,7 +9,8 @@ def main():
                        \n3- Ver número de mascotas en el servicio 
                        \n4- Ver medicamentos que se están administrando
                        \n5- Eliminar mascota 
-                       \n6- Salir 
+                       \n6- Eliminar medicamento
+                       \n7- Salir 
                        \nUsted ingresó la opción: ''' ))
 
         if menu == 1:
@@ -19,12 +20,21 @@ def main():
             historia = int(input(" ingrese la historia clinica de la mascota: "))
             if servicio_hospitalario.verificarExiste(historia) == False:
                 nombre=input("Ingrese el nombre de la mascota: ")
-                tipo=input("Ingrese el tipo de mascota (felino o canino): ")
+                tipo=int(input("Ingrese: \n 1- Si la mascota es de tipo felino \n 2- Si la mascota es de tipo canino  "))
                 peso=int(input("Ingrese el peso de la mascota: "))
-                fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
-                medicamento=Medicamento()
-                medicamento.asignarNombre(input("Ingrese nombre del medicamento: "))
-                medicamento.asignarDosis(int(input("Ingrese dosis del medicamento: ")))
+                fecha=datetime.datetime.now()
+                #La variable nm nos permite conocer la cantidad de mediacamentos de cada paciente
+                nm = int("Ingrese la cantidad de medicamentos de la mascota: ")
+                lista_med = []
+                #En siguiete ciclo for nos permite repetir nombre_mediamento y dosis segun el valor de nm
+                for i in ramge(0,nm): 
+                    nombre_medicamentos = input("Inegrese el nombre del medicamento: ")
+                    dosis = input("Ingrese la dosis")
+                    #Se crea un objeto de la clase medicamentos
+                    medicamento = Medicamento()
+                    medicamento.asignarNombre(nombre_medicamentos)
+                    medicamento.asignarDosis(dosis)
+                    lista_med.append(medicamento)
                 mas = Mascota()
                 mas.asignarNombre(nombre)
                 mas.asignarHistoria(historia)
@@ -32,7 +42,7 @@ def main():
                 mas.asignarTipo(tipo)
                 mas.asignarFecha(fecha)
                 mas.asignarMedicamento(medicamento)
-                servicio_hospitalario.ingresarMascota(mas)
+                servicio_hospitalario.ingresarMascota(lista_med)
 
             else:
                 print("Ya existe una mascota con el numero de historia clínica ingresado.") 
@@ -67,9 +77,11 @@ def main():
                 print("No se ha podido eliminar la mascota")
 
         elif menu==6:
+            pass
+        
+        elif menu==7:
             print("Usted ha salido del sistema de servicio de hospitalización...")
             break
-        
         else:
             print("Usted ingresó una opción no válida, intentelo nuevamente...")
 
