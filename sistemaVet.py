@@ -35,15 +35,17 @@ class Mascota:
     def asignarMedicamento(self,n):
         self.__medicamento = n 
 
-    def eliminarMedi(self,nombreMedicamento): 
-        self:__medicamento.remove(nombreMedicamento)
-        
+
+   
 class sistemaV:
     def __init__(self):
         self.__lista_felinos = {}
         self.__lista_caninos = {}
 
-#Creamos los siguientes métodos tanto para el diccionario de caninos como de felinos }
+    def eliminarMedi(self,nombreMedicamento): 
+        self:__medicamento.remove(nombreMedicamento) 
+
+#Creamos los siguientes métodos tanto para el diccionario de caninos como de felinos 
 
     def verificarExisteCaninos(self,historia):
         if historia in self.__lista_caninos:
@@ -100,14 +102,14 @@ class sistemaV:
             return True  #eliminado con exito
         return False 
     
-    def eliminarMedicamento(self, historia): 
+    def eliminarMedicamento(self, historia,nombreMedicamento): 
         if historia in self.__lista_caninos: 
             a=self.lista_caninos[historia]
-            del a
+            a.self.__medicamento.removed(nombreMedicamento)
             return True
         elif historia in self.__lista_felinos: 
-            a = self.lista_felinos[historia]
-            del a
+            a=self.lista_felinos[historia]
+            a.self.__medicamento.removed(nombreMedicamento)
             return True  #eliminado con exito
         return False 
         

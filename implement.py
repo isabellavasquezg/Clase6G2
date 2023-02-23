@@ -77,7 +77,13 @@ def main():
                 print("No se ha podido eliminar la mascota")
 
         elif menu==6:
-            pass
+            p = int(input("Ingrese la historia clínica de la mascota: "))
+            nombreMedicamento = input("Ingresde el nombre del medicamento que desea eliminar")
+            resultadi_operacion = servicio_hospitalario.eliminarMedicamento(p,nombreMedicamento)
+            if resultado_operacion == True:
+                print("Mascota eliminada del sistema con exito")
+            else: 
+                print("No se ha podido eliminar la mascota")
         
         elif menu==7:
             print("Usted ha salido del sistema de servicio de hospitalización...")
